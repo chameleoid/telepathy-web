@@ -1,25 +1,7 @@
 {
-	"camelcase": true,
-	"curly": false,
-	"eqeqeq": false,
-	"immed": true,
-	"latedef": true,
-	"newcap": true,
-	"noarg": true,
-	"noempty": true,
-	"nonew": true,
-	"quotmark": true,
-	"undef": true,
-	"unused": true,
-	"strict": true,
-	"trailing": true,
-	"boss": true,
-	"eqnull": true,
-	"smarttabs": true,
-	"sub": true,
-
 	"browser": true,
 	"node": true,
+  "esnext": true,
 
 	"globals": {
 		"describe": false,
