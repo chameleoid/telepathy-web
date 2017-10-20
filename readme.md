@@ -4,7 +4,7 @@ A telepathic password manager for browsers.
 
 [Builds]: http://img.shields.io/travis-ci/chameleoid/telepathy-web.png "Build Status"
 [travis]: https://travis-ci.org/chameleoid/telepathy-web
-[Deps]: https://gemnasium.com/chameleoid/telepathy-web.png "Dependency Status"
+[Deps]: https://img.shields.io/gemnasium/chameleoid/telepathy-web.png "Dependency Status"
 [gemnasium]: https://gemnasium.com/chameleoid/telepathy-web
 
 
