@@ -9,6 +9,9 @@
 		"before": false,
 		"after": false,
 		"beforeEach": false,
-		"afterEach": false
+		"afterEach": false,
+    "$": false,
+    "$$": false,
+    "browser": false
 	}
 }

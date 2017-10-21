@@ -1,5 +1,5 @@
 <!doctype html>
-<html manifest="manifest.appcache">
+<html>
 	<head>
 		<meta charset=utf-8>
 		<title>Telepathy</title>
@@ -11,10 +11,28 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<!--<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">-->
 
-		{% include "fragments/ios-icons.html" %}
-		{% include "fragments/ios-startup-images.html" %}
+		<!--<link rel="apple-touch-icon-precomposed" href="img/icon-57x57.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/icon-72x72.png">-->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/icon-114x114.png">
+<!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/icon-144x144.png">-->
 
-		<link rel="stylesheet" href="v{{ version }}/css/telepathy.css">
+		<!-- iPhone -->
+<link href="img/startup-320x480.png"
+      media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 1)"
+      rel="apple-touch-startup-image">
+
+<!-- iPhone (Retina) -->
+<link href="img/startup-640x920.png"
+      media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)"
+      rel="apple-touch-startup-image">
+
+<!-- iPhone 5 -->
+<link href="img/startup-640x1096.png"
+      media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"
+      rel="apple-touch-startup-image">
+
+
+		<link rel="stylesheet" href="css/telepathy.css">
 	</head>
 
 	<body>
@@ -75,7 +93,7 @@
 
 		<div class="content-wrapper">
 			<div class="content">
-				<h1>Telepathy<span class="version">v{{ version }}</span><small> - A telepathic password manager.</small></h1>
+				<h1>Telepathy<span class="version">v0.2.12-0.4.1</span><small> - A telepathic password manager.</small></h1>
 				<input id="domain" type="url" autocapitalize="off" autocorrect="off" placeholder="Example / example.com">
 				<input id="password" readonly>
 				<fieldset>
@@ -108,18 +126,11 @@
 		</div>
 
 		<div class="social">
-			<a href="https://www.gittip.com/rummik/" target="_blank" class="gittip fa-stack">
-				<i class="fa fa-github-square fa-stack-2x"></i>
-				<i class="fa fa-gittip fa-stack-2x"></i>
-			</a>
-			<a href="https://twitter.com/iotasamurai" target="_blank" class="twitter fa-stack">
-				<i class="fa fa-twitter-square fa-stack-2x"></i>
-			</a>
-			<a href="https://github.com/rummik/telepathy-web" target="_blank" class="github fa-stack">
+			<a href="https://github.com/chameleoid/telepathy-web" target="_blank" class="github fa-stack">
 				<i class="fa fa-github-square fa-stack-2x"></i>
 			</a>
 		</div>
 
-		<script src="v{{ version }}/js/telepathy.js"></script>
+		<script src="js/telepathy.js"></script>
 	</body>
 </html>
