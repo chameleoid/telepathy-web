@@ -47,7 +47,7 @@ let server;
 
 gulp.task('default', cb => runSequence([ 'lint', 'test'], 'build', cb));
 
-gulp.task('test', [ 'mocha' ]);
+gulp.task('test', [ 'lint', 'e2e' ]);
 
 gulp.task('lint', [ 'eslint' ]);
 
