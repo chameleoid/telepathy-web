@@ -34,6 +34,7 @@ exports.config = Object.assign(
         browserName: 'chrome',
         project: 'telepathy-web',
         'browserstack.local': true,
+        build: process.env.TRAVIS_BUILD_NUMBER || `local-${Math.random()}`
       },
     ],
 
