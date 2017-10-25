@@ -1,4 +1,4 @@
-Telepathy Web [![Builds][]][travis] [![Deps][]][gemnasium]
+Telepathy Web [![Builds][]][travis] [![Deps][]][gemnasium] [![Browsers][]][browserstack]
 =============
 A telepathic password manager for browsers.
 
@@ -6,6 +6,8 @@ A telepathic password manager for browsers.
 [travis]: https://travis-ci.org/chameleoid/telepathy-web
 [Deps]: https://img.shields.io/gemnasium/chameleoid/telepathy-web.png "Dependency Status"
 [gemnasium]: https://gemnasium.com/chameleoid/telepathy-web
+[Browsers]: https://www.browserstack.com/automate/badge.svg?badge_key=blEzN0RpcGFPeDJJZjZlZDd4bnpJTWN2QU5Md2F6OWovUS9xbGd5aWhPVT0tLUVzTUUwcEVBR05oTDA4QzBRMlNDbHc9PQ==--743532cf005d5b574d9e307e32053aa45b6c5c5f "BrowserStack Status"
+[browserstack]: https://www.browserstack.com/automate/public-build/blEzN0RpcGFPeDJJZjZlZDd4bnpJTWN2QU5Md2F6OWovUS9xbGd5aWhPVT0tLUVzTUUwcEVBR05oTDA4QzBRMlNDbHc9PQ==--743532cf005d5b574d9e307e32053aa45b6c5c5f
 
 
 ## Contributing
