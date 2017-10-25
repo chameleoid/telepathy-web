@@ -12,6 +12,8 @@ describe('index.html', () => {
       window.localStorage = {};
     });
 
+    $('#default-username').waitForEnabled();
+
     $('#default-username').setValue('test');
     $('#shared-secret').setValue('test');
     $('.save-settings').click();
