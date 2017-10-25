@@ -1,5 +1,5 @@
 <!doctype html>
-<html manifest="manifest.appcache">
+<html>
 	<head>
 		<meta charset=utf-8>
 		<title>Telepathy</title>
@@ -14,7 +14,7 @@
 		{% include "fragments/ios-icons.html" %}
 		{% include "fragments/ios-startup-images.html" %}
 
-		<link rel="stylesheet" href="v{{ version }}/css/telepathy.css">
+		<link rel="stylesheet" href="css/telepathy.css">
 	</head>
 
 	<body>
@@ -108,18 +108,11 @@
 		</div>
 
 		<div class="social">
-			<a href="https://www.gittip.com/rummik/" target="_blank" class="gittip fa-stack">
-				<i class="fa fa-github-square fa-stack-2x"></i>
-				<i class="fa fa-gittip fa-stack-2x"></i>
-			</a>
-			<a href="https://twitter.com/iotasamurai" target="_blank" class="twitter fa-stack">
-				<i class="fa fa-twitter-square fa-stack-2x"></i>
-			</a>
-			<a href="https://github.com/rummik/telepathy-web" target="_blank" class="github fa-stack">
+			<a href="https://github.com/chameleoid/telepathy-web" target="_blank" class="github fa-stack">
 				<i class="fa fa-github-square fa-stack-2x"></i>
 			</a>
 		</div>
 
-		<script src="v{{ version }}/js/telepathy.js"></script>
+		<script src="js/telepathy.js"></script>
 	</body>
 </html>
