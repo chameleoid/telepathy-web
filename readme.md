@@ -1,4 +1,6 @@
-Telepathy Web [![Builds][]][travis] [![Deps][]][gemnasium] [![Browsers][]][browserstack]
+[![Builds][]][travis] [![Browsers][]][browserstack] [![Deps][]][gemnasium]
+
+Telepathy Web
 =============
 A telepathic password manager for browsers.
 
