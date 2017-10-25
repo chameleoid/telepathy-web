@@ -124,7 +124,7 @@ gulp.task('server:stop', () => {
 });
 
 gulp.task('wdio', () =>
-  gulp.src(`.wdio/${process.env.CI ? 'ci' : 'local'}.conf.js`)
+  gulp.src(`.wdio.conf.js`)
     .pipe(plug.ignoreErrors())
     .pipe(plug.wdio({ wdio: {} }))
 );
