@@ -28,6 +28,7 @@ let dest = {
   css: `${dist}/css`,
   font: `${dist}/font`,
   html: dist,
+  ico: dist,
   img: `${dist}/img`,
   js: `${dist}/js`,
 };
@@ -38,6 +39,7 @@ let src = {
   entry: 'src/js/telepathy.js',
   font: 'src/font/{,font-awesome/}*.*',
   html: 'src/html/**/*.html',
+  ico: 'src/favicon.ico',
   img: 'src/img/*.*',
   js: 'src/js/*.js',
   less: 'src/css/telepathy.less',
@@ -54,7 +56,7 @@ let data = {
 // Task aliases
 gulp.task('default', cb => plug.runSequence('lint', 'build', 'test', cb));
 
-gulp.task('build', [ 'img', 'font', 'css', 'html' ]);
+gulp.task('build', [ 'ico', 'img', 'font', 'css', 'html' ]);
 
 gulp.task('test', [ 'e2e' ]);
 
@@ -107,6 +109,11 @@ gulp.task('swig', () =>
 gulp.task('img', () =>
   gulp.src(src.img)
     .pipe(gulp.dest(dest.img))
+);
+
+gulp.task('ico', () =>
+  gulp.src(src.ico)
+    .pipe(gulp.dest(dest.ico))
 );
 
 gulp.task('font', () =>
