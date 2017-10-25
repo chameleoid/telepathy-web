@@ -22,23 +22,26 @@ describe('index.html', () => {
   it('should generate a password', () => {
     $('#domain').setValue('example.com');
 
-    $('#password').waitForValue();
-    $('#password').getValue().should.equal('z<u9N_[c"R');
+    browser.waitUntil(() =>
+      $('#password').getValue() == 'z<u9N_[c"R'
+    );
   });
 
   it('should generate a password at a given index', () => {
     $('#index').selectByVisibleText('1');
     $('#domain').setValue('example.com');
 
-    $('#password').waitForValue();
-    $('#password').getValue().should.equal('g:3WGYj0}~');
+    browser.waitUntil(() =>
+      $('#password').getValue() == 'g:3WGYj0}~'
+    );
   });
 
   it('should generate a password of a given length', () => {
     $('#length').selectByVisibleText('8');
     $('#domain').setValue('example.com');
 
-    $('#password').waitForValue();
-    $('#password').getValue().should.equal('u9N_[c"R');
+    browser.waitUntil(() =>
+      $('#password').getValue() == 'u9N_[c"R'
+    );
   });
 });
