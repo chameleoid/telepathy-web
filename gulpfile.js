@@ -1,24 +1,29 @@
 'use strict';
 
+require('dotenv');
+
 const browserify = require('browserify');
-const buffer = require('vinyl-buffer');
-const cache = require('gulp-cached');
-const cleanCSS = require('gulp-clean-css');
-const eslint = require('gulp-eslint');
-const gls = require('gulp-live-server');
 const gulp = require('gulp');
-const less = require('gulp-less');
-const mocha = require('gulp-mocha');
 const path = require('path');
 const pkg = require('./package.json');
-const remember = require('gulp-remember');
-const runSequence = require('run-sequence');
-const source = require('vinyl-source-stream');
-const swig = require('gulp-swig');
-const wdio = require('gulp-wdio');
 
+const plug = require('gulp-load-plugins')({
+  pattern: [ 'vinyl-*', 'run-sequence' ],
+  overridePattern: false,
+
+  rename: {
+    'gulp-cached': 'cache',
+    'gulp-clean-css': 'cleanCSS',
+    'vinyl-buffer': 'buffer',
+    'vinyl-source-stream': 'source',
+  },
+});
+
+let server;
+
+
+// Destination paths for builds
 let dist = 'build';
-
 let dest = {
   css: `${dist}/css`,
   font: `${dist}/font`,
@@ -27,6 +32,7 @@ let dest = {
   js: `${dist}/js`,
 };
 
+// Locations of source files
 let src = {
   css: 'src/css/**/*.{less,css}',
   entry: 'src/js/telepathy.js',
@@ -39,56 +45,59 @@ let src = {
   test: 'src/test/**.{js,json}',
 };
 
+// Data to be included in Swig templates
 let data = {
   version: pkg.version,
 };
 
-let server;
 
-gulp.task('default', cb => runSequence([ 'lint', 'test'], 'build', cb));
+// Task aliases
+gulp.task('default', cb => plug.runSequence([ 'lint', 'test' ], 'build', cb));
+gulp.task('test', [ 'default', 'e2e' ]);
 
-gulp.task('test', [ 'lint', 'e2e' ]);
+gulp.task('build', [ 'img', 'font', 'css', 'html' ]);
+
+gulp.task('e2e', cb => plug.runSequence('server', 'wdio', 'server:stop', cb));
 
 gulp.task('lint', [ 'eslint' ]);
+gulp.task('html', [ 'swig' ]);
+gulp.task('css', [ 'less' ]);
 
-gulp.task('build', [ 'copy', 'css', 'html' ]);
+gulp.task('serve', cb => plug.runSequence('build', 'server', cb));
 
-gulp.task('copy', [ 'img', 'font' ]);
-
+// Tasks
 gulp.task('mocha', () =>
   gulp.src(src.test, { read: false })
-    .pipe(mocha({ reporter: 'spec' }))
+    .pipe(plug.mocha({ reporter: 'spec' }))
 );
 
 gulp.task('eslint', () =>
   gulp.src([ src.js, src.test ])
-    .pipe(cache('lint'))
-    .pipe(eslint())
-    .pipe(remember('lint'))
-    .pipe(eslint.format())
-    .pipe(eslint.failAfterError())
+    .pipe(plug.cache('lint'))
+    .pipe(plug.eslint())
+    .pipe(plug.remember('lint'))
+    .pipe(plug.eslint.format())
+    .pipe(plug.eslint.failAfterError())
 );
 
 gulp.task('js', () =>
   browserify(src.entry)
     .bundle()
-    .pipe(source('telepathy.js'))
-    .pipe(buffer())
+    .pipe(plug.source('telepathy.js'))
+    .pipe(plug.buffer())
     .pipe(gulp.dest(dest.js))
 );
 
-gulp.task('css', [ 'less' ]);
 gulp.task('less', () =>
   gulp.src(src.less)
-    .pipe(less())
-    .pipe(cleanCSS())
+    .pipe(plug.less())
+    .pipe(plug.cleanCSS())
     .pipe(gulp.dest(dest.css))
 );
 
-gulp.task('html', [ 'swig' ]);
 gulp.task('swig', () =>
   gulp.src(src.swig)
-    .pipe(swig({
+    .pipe(plug.swig({
       defaults: { cache: false },
       data,
     }))
@@ -106,19 +115,22 @@ gulp.task('font', () =>
 );
 
 gulp.task('server', () => {
-  server = gls.static(dist);
+  server = plug.liveServer.static(dist);
   server.start();
 });
 
-gulp.task('e2e', [ 'wdio' ]);
+gulp.task('server:stop', () => {
+  server.stop();
+});
+
 gulp.task('wdio', () =>
-  gulp.src('wdio.conf/local.js').pipe(wdio({ wdio: {} }))
+  gulp.src(`.wdio/${process.env.CI ? 'ci' : 'local'}.conf.js`)
+    .pipe(plug.ignoreErrors())
+    .pipe(plug.wdio({ wdio: {} }))
 );
 
-gulp.task('serve', cb => runSequence('build', 'server', cb));
-
 gulp.task('watch', [ 'serve' ], () => {
-  gulp.watch(src.js, cb => runSequence('eslint', 'js', cb));
+  gulp.watch(src.js, cb => plug.runSequence('eslint', 'js', cb));
   gulp.watch(src.css, [ 'css' ]);
   gulp.watch(src.html, [ 'html' ]);
   gulp.watch(src.img, [ 'img' ]);
@@ -128,28 +140,3 @@ gulp.task('watch', [ 'serve' ], () => {
     server.notify(file)
   );
 });
-
-/* 
-"grunt": "~0.4.1",
-"grunt-browserify": "~1.2.4",
-"grunt-contrib-connect": "~0.5.0",
-"grunt-contrib-cssmin": "~0.6.1",
-"grunt-contrib-htmlmin": "~0.1.3",
-"grunt-contrib-jshint": "~0.6.4",
-"grunt-contrib-less": "~0.7.0",
-"grunt-contrib-uglify": "~0.2.4",
-"grunt-contrib-watch": "~0.5.3",
-"grunt-karma": "~0.6.2",
-"grunt-manifest": "~0.4.0",
-"grunt-shell": "~0.3.1",
-"grunt-swig": "~0.1.0",
-"gulp": "^3.9.1",
-"gulp-cached": "^1.1.1",
-"gulp-eslint": "^4.0.0",
-"gulp-mocha": "^4.3.1",
-"gulp-remember": "^0.3.1",
-"karma-browserify": "~0.0.4",
-"karma-mocha": "~0.1.0",
-"mocha": "^4.0.1",
-"should": "~1.3.0"
-*/

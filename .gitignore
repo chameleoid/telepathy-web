@@ -1,6 +1,7 @@
 *.log
 *~
-node_modules
-docs
+.env
 dist
+docs
+node_modules
 screenshots
