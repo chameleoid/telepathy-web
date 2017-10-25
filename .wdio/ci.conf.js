@@ -18,7 +18,7 @@ exports.config = {
 
   reporters: [ 'spec' ],
 
-  waitforTimeout: 30000,
+  waitforTimeout: 60000,
   connectionRetryTimeout: 90000,
   connectionRetryCount: 3,
 
