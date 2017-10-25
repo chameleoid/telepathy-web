@@ -21,7 +21,7 @@
     "node": ">= 6.5.0"
   },
   "scripts": {
-    "test": "gulp test"
+    "test": "gulp"
   },
   "dependencies": {
     "telepathy": "^0.4.1-alpha",

@@ -39,8 +39,8 @@ let src = {
   entry: 'src/js/telepathy.js',
   font: 'src/font/{,font-awesome/}*.*',
   html: 'src/html/**/*.html',
-  ico: 'src/favicon.ico',
-  img: 'src/img/*.*',
+  ico: 'src/img/favicon.ico',
+  img: 'src/img/*.png',
   js: 'src/js/*.js',
   less: 'src/css/telepathy.less',
   swig: 'src/html/index.html',
@@ -54,13 +54,10 @@ let data = {
 
 
 // Task aliases
-gulp.task('default', cb => plug.runSequence('lint', 'build', 'test', cb));
+gulp.task('default', cb => plug.runSequence('build', 'server', 'test', 'server:stop', cb));
 
-gulp.task('build', [ 'ico', 'img', 'font', 'css', 'html' ]);
-
-gulp.task('test', [ 'e2e' ]);
-
-gulp.task('e2e', cb => plug.runSequence('server', 'wdio', 'server:stop', cb));
+gulp.task('build', [ 'ico', 'img', 'font', 'css', 'js', 'html' ]);
+gulp.task('test', [ 'lint', 'wdio' ]);
 
 gulp.task('lint', [ 'eslint' ]);
 gulp.task('html', [ 'swig' ]);
