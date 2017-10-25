@@ -52,10 +52,11 @@ let data = {
 
 
 // Task aliases
-gulp.task('default', cb => plug.runSequence([ 'lint', 'test' ], 'build', cb));
-gulp.task('test', [ 'default', 'e2e' ]);
+gulp.task('default', cb => plug.runSequence('lint', 'build', 'test', cb));
 
 gulp.task('build', [ 'img', 'font', 'css', 'html' ]);
+
+gulp.task('test', [ 'e2e' ]);
 
 gulp.task('e2e', cb => plug.runSequence('server', 'wdio', 'server:stop', cb));
 
