@@ -130,7 +130,7 @@ gulp.task('wdio', () =>
 );
 
 gulp.task('watch', () => plug.runSequence('build', 'server', () => {
-  gulp.watch(src.js, cb => plug.runSequence('eslint', 'js', cb));
+  gulp.watch(src.js, () => plug.runSequence('eslint', 'js'));
   gulp.watch(src.css, [ 'css' ]);
   gulp.watch(src.html, [ 'html' ]);
   gulp.watch(src.img, [ 'img' ]);
