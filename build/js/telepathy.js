@@ -10331,7 +10331,7 @@ module.exports.Zepto = Zepto;
   require('./settings');
   require('./ios-standalone');
 
-  $('#domain').on('keydown', _.debounce(function() {
+  $('#domain').on('keydown input', _.debounce(function() {
     var domain = this.value.replace(/^\s+|\s+$/g, '');
 
     if (!domain.length) {

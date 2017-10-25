@@ -6,7 +6,11 @@ describe('index.html', () => {
   beforeEach(() => {
     browser.url('/');
 
-    browser.localStorage('DELETE');
+    // browser.localStorage('DELETE') does not work in PhantomJS
+    browser.execute(function() {
+      delete window.localStorage;
+      window.localStorage = {};
+    });
 
     $('#default-username').setValue('test');
     $('#shared-secret').setValue('test');

@@ -57,7 +57,7 @@
     "wdio-browserstack-service": "^0.1.13",
     "wdio-junit-reporter": "^0.3.1",
     "wdio-mocha-framework": "^0.5.11",
-    "wdio-selenium-standalone-service": "0.0.9",
+    "wdio-phantomjs-service": "^0.2.2",
     "wdio-spec-reporter": "^0.1.2"
   },
   "keywords": [

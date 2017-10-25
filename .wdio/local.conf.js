@@ -2,13 +2,6 @@ exports.config = {
   specs: [ './test/**/*.js' ],
   exclude: [ ],
 
-  maxInstances: 1,
-
-  capabilities: [{
-    browserName: 'firefox',
-    project: 'telepathy-web',
-  }],
-
   sync: true,
   logLevel: 'silent',
   coloredLogs: true,
@@ -29,5 +22,12 @@ exports.config = {
   connectionRetryTimeout: 90000,
   connectionRetryCount: 3,
 
-  services: [ 'selenium-standalone' ],
+  services: [ 'phantomjs' ],
+
+  maxInstances: 10,
+
+  capabilities: [{
+    maxInstances: 10,
+    browserName: 'phantomjs',
+  }],
 };

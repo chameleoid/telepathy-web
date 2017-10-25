@@ -2,13 +2,6 @@ exports.config = {
   specs: [ './test/**/*.js' ],
   exclude: [ ],
 
-  maxInstances: 1,
-
-  capabilities: [{
-    browserName: 'chrome',
-    project: 'telepathy-web',
-  }],
-
   sync: true,
   logLevel: 'silent',
   coloredLogs: true,
@@ -30,6 +23,28 @@ exports.config = {
   connectionRetryCount: 3,
 
   services: [ 'browserstack' ],
+
+  maxInstances: 1,
+
+  capabilities: [
+    {
+      browserName: 'chrome',
+      project: 'telepathy-web',
+      'browserstack.local': true,
+    },
+
+    {
+      browserName: 'safari',
+      project: 'telepathy-web',
+      'browserstack.local': true,
+    },
+
+    {
+      browserName: 'firefox',
+      project: 'telepathy-web',
+      'browserstack.local': true,
+    },
+  ],
 
   browserstackLocal: true,
 
