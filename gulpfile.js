@@ -63,7 +63,6 @@ gulp.task('lint', [ 'eslint' ]);
 gulp.task('html', [ 'swig' ]);
 gulp.task('css', [ 'less' ]);
 
-gulp.task('serve', cb => plug.runSequence('build', 'server', cb));
 
 // Tasks
 gulp.task('mocha', () =>
@@ -129,7 +128,7 @@ gulp.task('wdio', () =>
     .pipe(plug.wdio({ wdio: {} }))
 );
 
-gulp.task('watch', [ 'serve' ], () => {
+gulp.task('watch', () => plug.runSequence('build', 'server', () => {
   gulp.watch(src.js, cb => plug.runSequence('eslint', 'js', cb));
   gulp.watch(src.css, [ 'css' ]);
   gulp.watch(src.html, [ 'html' ]);
@@ -139,4 +138,4 @@ gulp.task('watch', [ 'serve' ], () => {
   gulp.watch(`${dist}/**/*`, file => 
     server.notify(file)
   );
-});
+}));
