@@ -1,6 +1,6 @@
 'use strict';
 
-require('dotenv');
+require('dotenv').config();
 
 const browserify = require('browserify');
 const gulp = require('gulp');

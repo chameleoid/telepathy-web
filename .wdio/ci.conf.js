@@ -5,7 +5,8 @@ exports.config = {
   maxInstances: 1,
 
   capabilities: [{
-    browserName: 'firefox'
+    browserName: 'chrome',
+    project: 'telepathy-web',
   }],
 
   sync: true,
@@ -19,7 +20,7 @@ exports.config = {
   framework: 'mocha',
 
   mochaOpts: {
-    ui: 'bdd'
+    ui: 'bdd',
   },
 
   reporters: [ 'spec' ],
@@ -29,6 +30,8 @@ exports.config = {
   connectionRetryCount: 3,
 
   services: [ 'browserstack' ],
+
+  browserstackLocal: true,
 
   user: process.env.BROWSERSTACK_USER,
   key: process.env.BROWSERSTACK_PASS,

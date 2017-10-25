@@ -5,7 +5,8 @@ exports.config = {
   maxInstances: 1,
 
   capabilities: [{
-    browserName: 'firefox'
+    browserName: 'firefox',
+    project: 'telepathy-web',
   }],
 
   sync: true,
@@ -19,7 +20,7 @@ exports.config = {
   framework: 'mocha',
 
   mochaOpts: {
-    ui: 'bdd'
+    ui: 'bdd',
   },
 
   reporters: [ 'spec' ],
