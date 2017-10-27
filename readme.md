@@ -5,7 +5,7 @@
 
 Telepathy Web
 =============
-A telepathic password manager for browsers.
+A sync-less "telepathic" password manager that generates repeatable site-specific passwords across any of your devices.
 
 [Website]: https://img.shields.io/website-up-down-green-red/http/telepathy.pw.svg?label=telepathy.pw "Website Status"
 [Builds]: http://img.shields.io/travis-ci/chameleoid/telepathy-web.png "Build Status"
