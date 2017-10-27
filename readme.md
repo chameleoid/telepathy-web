@@ -28,4 +28,5 @@ changed functionality.  Lint and test your code using [Gulp][].
 
 ## License
 Copyright (c) 2012-2017 Chameleoid and Kimberly Zick (rummik)
-Licensed under the MPL.
+
+Licensed under the MPL
