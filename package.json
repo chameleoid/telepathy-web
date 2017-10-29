@@ -1,7 +1,7 @@
 {
   "name": "telepathy-web",
   "description": "A telepathic password manager for browsers",
-  "version": "0.2.13-0.4.1",
+  "version": "0.3.0-0.4.2",
   "private": true,
   "homepage": "https://github.com/chameleoid/telepathy-web",
   "repository": {
@@ -29,7 +29,7 @@
     "font-awesome": "https://github.com/FortAwesome/Font-Awesome/tarball/v4.0.3",
     "koa": "^2.3.0",
     "koa-serve-static": "^1.0.0",
-    "telepathy": "^0.4.1-alpha",
+    "telepathy": "^0.4.2",
     "underscore": "^1.8.3",
     "zepto-browserify": "^1.1.6-1"
   },
