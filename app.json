@@ -15,8 +15,8 @@
   },
   "env": {
     "NPM_CONFIG_PRODUCTION": {
-      "description": "Enable/disable installing dev-dependencies (must be true for Telepathy to function)",
-      "value": "true"
+      "description": "Enable/disable installing dev-dependencies (must be false for Telepathy to function)",
+      "value": "false"
     },
     "NODE_MODULES_CACHE": {
       "description": "Enable/disable caching node_modules",
