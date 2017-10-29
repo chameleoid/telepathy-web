@@ -1,0 +1,29 @@
+{
+  "name": "Telepathy",
+  "description": "A telepathic password manager",
+  "keywords": [
+    "telepathic",
+    "password",
+    "manager"
+  ],
+  "website": "https://telepathy.pw",
+  "repository": "https://github.com/chameleoid/telepathy-web",
+  "logo": "https://telepathy.pw/img/icon-114x114.png",
+  "success_url": "/",
+  "scripts": {
+    "postdeploy": "echo Done."
+  },
+  "env": {
+    "NPM_CONFIG_PRODUCTION": {
+      "description": "Enable/disable installing dev-dependencies (must be true for Telepathy to function)",
+      "value": "true"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+    }
+  },
+  "image": "heroku/nodejs"
+}
