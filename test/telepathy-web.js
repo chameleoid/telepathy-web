@@ -12,6 +12,8 @@ describe('index.html', () => {
       window.localStorage = {};
     });
 
+    browser.url('/');
+
     $('#default-username').waitForEnabled();
 
     $('#default-username').setValue('test');
