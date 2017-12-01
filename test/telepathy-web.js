@@ -48,4 +48,27 @@ describe('index.html', () => {
       $('#password').getValue() == 'u9N_[c"R'
     );
   });
+
+  it('should open settings menu', () => {
+    $('#open-settings').click();
+
+    browser.waitUntil(() =>
+      $('#settings').getLocation() >= '0'
+    );
+  });
+
+  it('should change the algorithm', () => {
+    $('#open-settings').click();
+    $('#algorithm').waitForEnabled();
+    $('#algorithm').selectByVisibleText('SHA-512');
+    $('.save-settings').click();
+    $('#domain').waitForEnabled();
+    $('#domain').setValue('example.com');
+
+    browser.waitUntil(() =>
+      $('#password').getValue() == 'V{fvC^YRi('
+    );
+  });
+
 });
+
