@@ -42,6 +42,7 @@ let src = {
   ico: 'src/img/favicon.ico',
   img: 'src/img/*.png',
   js: 'src/js/*.js',
+  json: 'src/*.json',
   less: 'src/css/telepathy.less',
   swig: 'src/html/index.html',
   test: 'src/test/**.{js,json}',
@@ -80,7 +81,14 @@ gulp.task('eslint', () =>
 );
 
 gulp.task('js', () =>
-  browserify(src.entry)
+  browserify({ debug: true })
+    .add(src.entry)
+
+    .transform('babelify', {
+      presets: [ 'env', 'flow' ],
+      plugins: [ 'transform-class-properties' ],
+    })
+
     .bundle()
     .pipe(plug.source('telepathy.js'))
     .pipe(plug.buffer())
@@ -104,8 +112,9 @@ gulp.task('swig', () =>
 );
 
 gulp.task('img', () =>
-  gulp.src(src.img)
-    .pipe(gulp.dest(dest.img))
+  gulp.src([ src.json, src.img ], { base: 'src' })
+    .pipe(plug.inlineResize({ replaceIn: [ '.json' ] }))
+    .pipe(gulp.dest(dist))
 );
 
 gulp.task('ico', () =>
@@ -140,7 +149,7 @@ gulp.task('watch', () => plug.runSequence('build', 'server', () => {
   gulp.watch(src.img, [ 'img' ]);
   gulp.watch(src.font, [ 'font' ]);
 
-  gulp.watch(`${dist}/**/*`, file => 
+  gulp.watch(`${dist}/**/*`, file =>
     server.notify(file)
   );
 }));

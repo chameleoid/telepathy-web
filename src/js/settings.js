@@ -1,34 +1,32 @@
-(function() {
-  'use strict';
+'use strict';
 
-  var $ = require('zepto-browserify').Zepto;
-  var UI = require('./ui.js');
+import UI from './ui';
+import { Zepto as $ } from 'zepto-browserify';
 
-  $('#open-settings').on('click', function(event) {
-    event.preventDefault();
-    $('#settings').addClass('open');
+$('#open-settings').on('click', function(event) {
+  event.preventDefault();
+  $('#settings').addClass('open');
+});
+
+$('#settings input, #settings select').each((n, element) => {
+  let $element = $(element);
+
+  $element.on('change', () => {
+    if (!$element.prop('name'))
+      return;
+
+    UI.settings[$element.prop('name')] = $element.val();
   });
+});
 
-  $('#settings input, #settings select').each(function() {
-    var $this = $(this);
+$('.save-settings').on('click', function() {
+  UI.save();
+  UI.load();
+});
 
-    $this.on('change', function() {
-      if (!$this.prop('name'))
-        return;
+$('.reset-settings').on('click', function() {
+  UI.load();
+});
 
-      UI.settings[$this.prop('name')] = $this.val();
-    });
-  });
-
-  $('.save-settings').on('click', function() {
-    UI.save();
-    UI.load();
-  });
-
-  $('.reset-settings').on('click', function() {
-    UI.load();
-  });
-
-  if (!UI.settings['shared-secret'].length)
-    $('#settings').addClass('open');
-})();
+if (!UI.settings['shared-secret'].length)
+  $('#settings').addClass('open');

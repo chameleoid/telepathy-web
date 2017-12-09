@@ -1,9 +1,7 @@
-(function() {
-  'use strict';
+'use strict';
 
-  var $ = require('zepto-browserify').Zepto;
+import { Zepto as $ } from 'zepto-browserify';
 
-  $('.modal-close').on('click', function() {
-    $(this).parents('.modal').removeClass('open');
-  });
-})();
+$('.modal-close').on('click', function() {
+  $(this).parents('.modal').removeClass('open');
+});

@@ -35,6 +35,12 @@
     "zepto-browserify": "^1.1.6-1"
   },
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.3",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-flow": "^6.23.0",
+    "babelify": "^8.0.0",
     "browserify": "^14.5.0",
     "dotenv": "^4.0.0",
     "gulp": "^3.9.1",
@@ -44,6 +50,7 @@
     "gulp-eslint": "^4.0.0",
     "gulp-htmlclean": "^2.7.15",
     "gulp-ignore-errors": "0.0.4",
+    "gulp-inline-resize": "^0.1.7",
     "gulp-less": "^3.3.2",
     "gulp-live-server": "0.0.31",
     "gulp-load-plugins": "^1.5.0",

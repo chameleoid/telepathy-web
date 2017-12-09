@@ -1,0 +1,25 @@
+{
+  "name": "Telepathy",
+  "short_name": "Telepathy",
+  "start_url": "index.html",
+  "orientation": "portrait",
+  "display": "standalone",
+
+  "icons": [
+    {
+      "src": "img/launcher-icon.png;48w",
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "img/launcher-icon.png;96w",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "img/launcher-icon.png;192w",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ]
+}
