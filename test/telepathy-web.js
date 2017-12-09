@@ -55,7 +55,7 @@ describe('index.html', () => {
   });
 
   it('should open settings menu', () => {
-//    $('#open-settings').click();
+    $('#open-settings').click();
 
     browser.waitUntil(() =>
       $('#settings').getLocation('y') >= 0
