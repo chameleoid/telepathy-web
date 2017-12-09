@@ -21,7 +21,7 @@ describe('index.html', () => {
     $('.save-settings').click();
 
     $('#domain').waitForEnabled();
-    
+
     // wait for .modal-bg to be hidden
     browser.waitUntil(() =>
       $('.modal-bg').getCssProperty('z-index').value == -1
@@ -55,10 +55,10 @@ describe('index.html', () => {
   });
 
   it('should open settings menu', () => {
-    $('#open-settings').click();
+//    $('#open-settings').click();
 
     browser.waitUntil(() =>
-      $('#settings').getLocation() >= '0'
+      $('#settings').getLocation('y') >= 0
     );
   });
 
