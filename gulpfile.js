@@ -8,7 +8,7 @@ const path = require('path');
 const pkg = require('./package.json');
 
 const plug = require('gulp-load-plugins')({
-  pattern: [ 'vinyl-*', 'run-sequence' ],
+  pattern: [ 'vinyl-*' ],
   overridePattern: false,
 
   rename: {
@@ -54,7 +54,7 @@ let data = {
 
 
 // Task aliases
-gulp.task('default', cb => plug.runSequence('build', 'server', 'test', 'server:stop', cb));
+gulp.task('default', plug.sequence('build', 'server', 'test', 'server:stop'));
 
 gulp.task('build', [ 'ico', 'img', 'font', 'css', 'js', 'html' ]);
 gulp.task('test', [ 'lint', 'wdio' ]);
@@ -80,7 +80,8 @@ gulp.task('eslint', () =>
 );
 
 gulp.task('js', () =>
-  browserify(src.entry)
+  browserify({ debug: true })
+    .add(src.entry)
     .bundle()
     .pipe(plug.source('telepathy.js'))
     .pipe(plug.buffer())
@@ -133,14 +134,14 @@ gulp.task('wdio', () =>
     .pipe(plug.wdio({ wdio: {} }))
 );
 
-gulp.task('watch', () => plug.runSequence('build', 'server', () => {
-  gulp.watch(src.js, () => plug.runSequence('eslint', 'js'));
+gulp.task('watch', () => plug.sequence('build', 'server', () => {
+  gulp.watch(src.js, plug.sequence('eslint', 'js'));
   gulp.watch(src.css, [ 'css' ]);
   gulp.watch(src.html, [ 'html' ]);
   gulp.watch(src.img, [ 'img' ]);
   gulp.watch(src.font, [ 'font' ]);
 
-  gulp.watch(`${dist}/**/*`, file => 
+  gulp.watch(`${dist}/**/*`, file =>
     server.notify(file)
   );
 }));
