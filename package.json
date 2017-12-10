@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "font-awesome": "https://github.com/FortAwesome/Font-Awesome/tarball/v4.0.3",
-    "koa": "^2.3.0",
+    "koa": "^2.4.1",
     "koa-serve-static": "^1.0.0",
     "koa-sslify": "^2.1.2",
     "telepathy": "^0.4.2",
@@ -42,7 +42,7 @@
     "gulp-clean-css": "^3.9.0",
     "gulp-data": "^1.2.1",
     "gulp-eslint": "^4.0.0",
-    "gulp-htmlclean": "^2.7.15",
+    "gulp-htmlclean": "^2.7.16",
     "gulp-ignore-errors": "0.0.4",
     "gulp-less": "^3.3.2",
     "gulp-live-server": "0.0.31",
@@ -63,7 +63,7 @@
     "wdio-junit-reporter": "^0.3.1",
     "wdio-mocha-framework": "^0.5.11",
     "wdio-phantomjs-service": "^0.2.2",
-    "wdio-spec-reporter": "^0.1.2"
+    "wdio-spec-reporter": "^0.1.3"
   },
   "keywords": [
     "telepathic",
