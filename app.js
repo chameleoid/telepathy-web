@@ -10,7 +10,9 @@ if (process.env.NODE_ENV === 'production') {
   }));
 }
 
-app.use(serveStatic('build'));
+app.use(serveStatic('build', {
+  fallthrough: false,
+}));
 
 app.listen(process.env.PORT || 3000, () =>
   console.log(`Listening on http://localhost:${process.env.PORT || 3000}`)
