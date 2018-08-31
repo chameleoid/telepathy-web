@@ -31,6 +31,12 @@ changed functionality.  Lint and test your code using [Gulp][].
 [Gulp]: http://gulpjs.com/
 
 
+## Sponsors
+<a href="https://www.digitalocean.com/?utm_medium=opensource&utm_source=telepathy-pw">
+  <img src="https://opensource.nyc3.digitaloceanspaces.com/attribution/assets/SVG/DO_Logo_horizontal_blue.svg" width="201px">
+</a>
+
+
 ## License
 Copyright (c) 2012-2017 Chameleoid and Kimberly Zick (rummik)
 
