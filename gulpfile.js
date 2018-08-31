@@ -37,10 +37,10 @@ let dest = {
 let src = {
   css: 'src/css/**/*.{less,css}',
   entry: 'src/js/telepathy.js',
-  font: 'src/font/{,font-awesome/}*.*',
+  font: 'src/font/{,fork-awesome/}*.*',
   html: 'src/html/**/*.html',
   ico: 'src/img/favicon.ico',
-  img: 'src/img/*.png',
+  img: 'src/img/*.{svg,png}',
   js: 'src/js/*.js',
   less: 'src/css/telepathy.less',
   swig: 'src/html/index.html',
@@ -140,7 +140,7 @@ gulp.task('watch', () => plug.runSequence('build', 'server', () => {
   gulp.watch(src.img, [ 'img' ]);
   gulp.watch(src.font, [ 'font' ]);
 
-  gulp.watch(`${dist}/**/*`, file => 
+  gulp.watch(`${dist}/**/*`, file =>
     server.notify(file)
   );
 }));
