@@ -1,8 +1,3 @@
-[![Website][]](https://telepathy.pw)
-[![Builds][]][travis]
-[![Browsers][]][browserstack]
-[![Deps][]][gemnasium]
-
 Telepathy Web
 =============
 A sync-less "telepathic" password manager that generates repeatable site-specific passwords across any of your devices.
